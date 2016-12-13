@@ -5,9 +5,11 @@
 
 ##简介
 `qrcode2pdf.py`   核心模块
+
 `pycmd.py`        命令行模块。用法 `python pycmd.py input.txt`
+
 `pygui.py`        图形用户界面模块
 
 
 ##输出结果
-![img](https://github.com/wzxwater/qrcode-pdf/raw/master/output/img/2016-12-08_11_34_57___0.png)
+![img](https://github.com/wzxwater/qrcode-pdf/raw/master/example.png)

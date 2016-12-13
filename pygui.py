@@ -4,16 +4,9 @@ from Tkinter import *
 from tkFileDialog import askopenfilename
 import qrcode2pdf
 import tkMessageBox
+import subprocess
 
 class Application(Frame):
-
-    def showError(self):
-        # name = self.nameInput.get() or 'world'
-        tkMessageBox.showinfo('提示', '请选择文本文件')
-
-    def sfa(self,filename):
-        qrcode2pdf.mainFunc(filename)
-
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -27,13 +20,11 @@ class Application(Frame):
        filename = askopenfilename()
        if filename and not filename.isspace():
             if filename.endswith('txt'):
-                qrcode2pdf.mainFunc(filename)
-                tkMessageBox.showinfo('提示', '生成二维码成功')
+                output_dir = qrcode2pdf.mainFunc(filename)
+                subprocess.call(["open", "-R", filename])
+                # tkMessageBox.showinfo('提示', '生成二维码成功')
             else:
-                self.showError()
-            # qrcode2pdf.mainFunc(filename)
-       # print("123")
-       # self.sfa(filename)
+                tkMessageBox.showinfo('提示', '请选择文本文件')
 
 
     def createWidgets(self):

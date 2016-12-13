@@ -1,9 +1,12 @@
+#!/usr/bin/python
+#coding:utf-8
 from PIL import Image, ImageDraw, ImageFont
 import qrcode
 import os
 import img2pdf
 import time
 from PyPDF2 import PdfFileWriter, PdfFileReader
+import re
 
 def generate_relative_path(path):
 	return "." + path
@@ -116,6 +119,10 @@ def mainFunc(input_file_name):
 	img_list = []
 	base_l_image = Image.new("RGBA",(background_width,background_height),(255,255,255)).convert('RGBA')
 	for line in file:
+		if line.isspace():
+			continue
+		if not re.match(r'^\d{15}$', line):
+			continue
 		if(image_index == 0 or  image_index % (row * column) == 0):
 			base_l_image = Image.new("RGBA",(background_width,background_height),(255,255,255)).convert('RGBA')
 			img_list.append(base_l_image)
@@ -156,9 +163,27 @@ def mainFunc(input_file_name):
 	output.write(outputStream)
 
 	print "success!"
+	return output_pdf_dir + "/"+curr_time+".pdf"
 
 
-# mainFunc()
 
+
+
+
+
+# qr1 = qrcode.QRCode(
+# 	version=1,
+# 	error_correction=qrcode.constants.ERROR_CORRECT_H,
+# 	box_size=8,
+# 	border=4,
+# )
+# imei = "865067022467529"
+# qr1.add_data("{\"imei\":\"" + imei +"\"}");
+# qr1.make(fit=True)
+# img = qr1.make_image().convert('RGBA')
+# img.show()
+# print(img.width)
+# print(img.height)
+#37 74 111
 
 
