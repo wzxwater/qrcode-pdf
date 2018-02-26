@@ -1,0 +1,5 @@
+CALL_PHONE:打電話給安行寶設備，方便用戶操作
+ACCESS_FINE_LOCATION：獲取用戶定位，規劃手機到安行寶的路線
+CAMERA：二維碼掃碼
+READ_CONTACTS：獲取聯繫人，方便用戶設置安行寶的親情號碼
+WRITE_CONTACTS：獲取聯繫人，方便用戶設置安行寶的親情號碼
